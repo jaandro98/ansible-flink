@@ -1,5 +1,7 @@
 ---
 - hosts: all
+  vars:
+    script_name: hola_mundo.py
   tasks:
     - name: Download python script from Github
       get_url:
@@ -7,10 +9,10 @@
         dest: /home/centos/
         mode: 0644
     - name: Run hello world python script
-      command: python /home/centos/hola_mundo.py
+      command: "python /home/centos/{{ script_name }}"
       register: output
     - debug: var=output.stdout_lines
     - name: Remove python script after execution
       file:
-        path: /home/centos/hola_mundo.py
+        path: "/home/centos/{{ script_name }}"
         state: absent
