@@ -10,3 +10,7 @@
       command: python /home/centos/hola_mundo.py
       register: output
     - debug: var=output.stdout_lines
+    - name: Remove python script after execution
+      file:
+        path: /home/centos/hola_mundo.py
+        state: absent
