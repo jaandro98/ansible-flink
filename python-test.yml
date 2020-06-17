@@ -1,0 +1,7 @@
+---
+- hosts: all
+  tasks:
+    - name: Run hello world python script
+      command: python /home/centos/hola_mundo.py
+      register: output
+    - debug: var=output.stdout_lines
