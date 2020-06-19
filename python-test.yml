@@ -26,12 +26,4 @@
       script: "{{ local_path + script_name }}"
       register: output
     - debug: var=output.stdout_lines
-    - name: Remove python script after execution
-      file:
-        path: "{{ script_path + script_name }}"
-        state: absent
-    - name: Remove python tar after execution
-      file:
-        path: "{{ script_path + zip_name }}"
-        state: absent
     
