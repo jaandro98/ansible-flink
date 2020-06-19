@@ -1,24 +1,29 @@
 ---
-- hosts: all
+- hosts: localhost
+  connection: local
   vars:
-    script_name: hola_mundo.py
-    script_url: https://raw.githubusercontent.com/jaandro98/ansible-flink/master/hola_mundo.py
-    script_path: /home/centos/
     script_zip: https://github.com/jaandro98/ansible-flink/raw/master/python.tar.gz
     zip_name: python.tar.gz
+    local_path: /home/alejandro/
   tasks:
     - name: Download python zip script from Github
       get_url: 
         url: "{{ script_zip }}"
-        dest: "{{ script_path }}"
+        dest: "{{ local_path }}"
         mode: 0644
     - name: unzip python script
       unarchive:
-        src: "{{ script_path + zip_name }}"
-        dest: "{{ script_path }}"
-        remote_src: yes
+        src: "{{ local_path + zip_name }}"
+        dest: "{{ local_path }}"
+- hosts: 192.168.1.50
+  vars:
+    script_name: hola_mundo.py
+    script_path: /home/centos/
+    zip_name: python.tar.gz
+    local_path: /home/alejandro/
+  tasks:
     - name: Run hello world python script
-      command: "python {{ script_path + script_name }}"
+      script: "{{ local_path + script_name }}"
       register: output
     - debug: var=output.stdout_lines
     - name: Remove python script after execution
