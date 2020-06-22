@@ -1,0 +1,14 @@
+command: python mnist.py
+container: tensorflow/tensorflow:1.13.1-gpu-py3
+experimentEnv:
+  EPOCHS_EVAL: 5
+  EVAL_SECS: 10
+  MAX_STEPS: 1000
+  TRAIN_EPOCHS: 10
+machineType: K80
+modelPath: /artifacts
+modelType: Tensorflow
+name: mnist-cli-local-workspace
+projectId: pr64qlxl0
+tensorboard: false
+workspace: 'https://github.com/Paperspace/mnist-sample.git'
