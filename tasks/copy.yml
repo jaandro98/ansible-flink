@@ -1,0 +1,36 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    config_path: https://raw.githubusercontent.com/jaandro98/ansible-flink/master/files/config.yml
+    jar_path: https://github.com/jaandro98/ansible-flink/raw/master/files/httpclient-4.5.2.jar
+    local_path: /home/alejandro/
+  tasks:
+    - name: Download config file
+      get_url: 
+        url: "{{ config_path }}"
+        dest: "{{ local_path }}"
+        mode: 0644
+    - name: Download jar file
+      get_url: 
+        url: "{{ jar_path }}"
+        dest: "{{ local_path }}"
+        mode: 0644
+- hosts: 192.168.1.50
+  vars:
+    local_path: /home/alejandro/
+    dest_path: /home/centos/
+    config_name: config.yml
+    jar_name: httpclient-4.5.2.jar
+  tasks:
+    - name: Copy config file to remote
+      copy:
+        src: "{{ local_path + config_name }}"
+        dest: "{{ dest_path }}"
+        mode: 0644
+    - name: Copy jar file to remote
+      copy:
+        src: "{{ local_path + jar_name }}"
+        dest: "{{ dest_path }}"
+        mode: 0644
+
