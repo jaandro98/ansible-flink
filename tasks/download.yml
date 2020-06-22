@@ -2,7 +2,7 @@
 - hosts: localhost
   connection: local
   vars:
-    script_zip: https://github.com/jaandro98/ansible-flink/raw/master/files/python.tar.gz
+    script_zip: https://github.com/jaandro98/ansible-flink/raw/master/python.tar.gz
     zip_name: python.tar.gz
     local_path: /home/alejandro/
   tasks:
