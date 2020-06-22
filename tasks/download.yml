@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    script_zip: https://github.com/jaandro98/ansible-flink/raw/master/python.tar.gz
+    zip_name: python.tar.gz
+    local_path: /home/alejandro/
+  tasks:
+    - name: Download python zip script from Github
+      get_url: 
+        url: "{{ script_zip }}"
+        dest: "{{ local_path }}"
+        mode: 0644
+    - name: unzip python script
+      unarchive:
+        src: "{{ local_path + zip_name }}"
+        dest: "{{ local_path }}"

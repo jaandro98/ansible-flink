@@ -1,0 +1,11 @@
+- hosts: 192.168.1.50
+  vars:
+    script_name: hola_mundo.py
+    script_path: /home/centos/
+    zip_name: python.tar.gz
+    local_path: /home/alejandro/
+  tasks:
+    - name: Run hello world python script
+      script: "{{ local_path + script_name }}"
+      register: output
+    - debug: var=output.stdout_lines
