@@ -3,5 +3,5 @@ Pruebas despliegue ansible con flink
 
 ## Ejecución    
 ```
-ansible-playbook python-test.yml -i inventory/hosts -u centos --ask-pass 
+ansible-playbook tasks/main.yml -i inventory/hosts -u centos --ask-pass 
 ```
