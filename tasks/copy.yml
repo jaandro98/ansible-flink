@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: local
   connection: local
   vars:
     config_path: https://raw.githubusercontent.com/jaandro98/ansible-flink/master/files/config.yml
@@ -16,7 +16,7 @@
         url: "{{ jar_path }}"
         dest: "{{ local_path }}"
         mode: 0644
-- hosts: 192.168.1.50
+- hosts: remote
   vars:
     local_path: /home/alejandro/
     dest_path: /home/centos/

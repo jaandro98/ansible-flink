@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: local
   connection: local
   vars:
     script_zip: https://github.com/jaandro98/ansible-flink/raw/master/python.tar.gz
