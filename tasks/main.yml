@@ -1,4 +1,4 @@
 ---
-- include: copy.yml
-- include: download.yml
-- include: run.yml
+- import_playbook: copy.yml
+- import_playbook: download.yml
+- import_playbook: run.yml
