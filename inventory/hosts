@@ -5,10 +5,10 @@ localhost
 192.168.1.50
 
 [local:vars]
-config_path=https://raw.githubusercontent.com/jaandro98/ansible-flink/master/files/config.yml
-jar_path=https://github.com/jaandro98/ansible-flink/raw/master/files/httpclient-4.5.2.jar
+config_path=https://or-python-test.s3-eu-west-1.amazonaws.com/config.yml
+jar_path=https://or-python-test.s3-eu-west-1.amazonaws.com/httpclient-4.5.2.jar
 local_path=/home/alejandro/
-script_zip=https://github.com/jaandro98/ansible-flink/raw/master/python.tar.gz
+script_zip=https://or-python-test.s3-eu-west-1.amazonaws.com/python.tar.gz
 zip_name=python.tar.gz
 
 [remote:vars]

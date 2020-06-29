@@ -1,4 +1,7 @@
 ---
-- include: copy.yml
-- include: download.yml
-- include: run.yml
+- name: import copy module - aux files for python script
+  include: copy.yml
+- name: import download module - python in targ gz format
+  include: download.yml
+- name : import run module - python exec
+  include: run.yml
