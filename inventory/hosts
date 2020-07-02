@@ -8,7 +8,7 @@ localhost
 config_path=https://or-python-test.s3-eu-west-1.amazonaws.com/config.yml
 jar_path=https://or-python-test.s3-eu-west-1.amazonaws.com/httpclient-4.5.2.jar
 local_path=/home/alejandro/
-script_zip=https://or-python-test.s3-eu-west-1.amazonaws.com/python.tar.gz
+script_zip=https://or-python-test.s3-eu-west-1.amazonaws.com/python-flink.tar.gz
 zip_name=python.tar.gz
 
 [remote:vars]
@@ -16,5 +16,5 @@ local_path=/home/alejandro/
 dest_path=/home/centos/
 config_name=config.yml
 jar_name=httpclient-4.5.2.jar
-zip_name=python.tar.gz
-script_name=hola_mundo.py
+zip_name=python-flink.tar.gz
+script_name=python-flink.py
