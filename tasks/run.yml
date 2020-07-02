@@ -6,6 +6,6 @@
     #local_path: /home/alejandro/
   tasks:
     - name: Run hello world python script
-      script: "{{ hostvars['192.168.1.62']['local_path'] + hostvars['192.168.1.62']['script_name'] -n Alejandro }}"
+      script: "{{ hostvars['192.168.1.62']['local_path'] + hostvars['192.168.1.62']['script_name'] }} --name Alejandro "
       register: output
     - debug: var=output.stdout_lines

@@ -9,7 +9,7 @@ config_path=https://or-python-test.s3-eu-west-1.amazonaws.com/config.yml
 jar_path=https://or-python-test.s3-eu-west-1.amazonaws.com/httpclient-4.5.2.jar
 local_path=/home/alejandro/
 script_zip=https://or-python-test.s3-eu-west-1.amazonaws.com/python-flink.tar.gz
-zip_name=python.tar.gz
+zip_name=python-flink.tar.gz
 
 [remote:vars]
 local_path=/home/alejandro/
