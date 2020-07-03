@@ -6,7 +6,7 @@
     #jar_path: https://github.com/jaandro98/ansible-flink/raw/master/files/httpclient-4.5.2.jar
     #local_path: /home/alejandro/
   tasks:
-    - name: Download config file
+    - name: Download config tar gz
       get_url: 
         url: "{{ hostvars['localhost']['config_path'] }}"
         dest: "{{ hostvars['localhost']['local_path'] }}"
