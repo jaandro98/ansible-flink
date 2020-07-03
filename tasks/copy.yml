@@ -16,6 +16,11 @@
         url: "{{ hostvars['localhost']['jar_path'] }}"
         dest: "{{ hostvars['localhost']['local_path'] }}"
         mode: 0644
+    - name: Unzip config yaml file
+      unarchive:
+        src: "{{ hostvars['localhost']['local_path'] + hostvars['localhost']['zip_config'] }}"
+        dest: "{{ hostvars['localhost']['local_path'] }}"
+      
 - hosts: remote
   vars:
     #local_path: /home/alejandro/
@@ -25,12 +30,12 @@
   tasks:
     - name: Copy config file to remote
       copy:
-        src: "{{ hostvars['192.168.1.62']['local_path'] + hostvars['192.168.1.62']['config_name'] }}"
+        src: "{{ hostvars['localhost']['local_path'] + hostvars['192.168.1.62']['config_name'] }}"
         dest: "{{ hostvars['192.168.1.62']['dest_path'] }}"
         mode: 0644
     - name: Copy jar file to remote
       copy:
-        src: "{{ hostvars['192.168.1.62']['local_path'] + hostvars['192.168.1.62']['jar_name'] }}"
+        src: "{{ hostvars['localhost']['local_path'] + hostvars['192.168.1.62']['jar_name'] }}"
         dest: "{{ hostvars['192.168.1.62']['dest_path'] }}"
         mode: 0644
 
