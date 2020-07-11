@@ -1,6 +1,8 @@
 ---
 - hosts: local
   connection: local
+  vars_files:
+    - "../defaults/main.yml"
   vars:
     #config_path: https://raw.githubusercontent.com/jaandro98/ansible-flink/master/files/config.yml
     #jar_path: https://github.com/jaandro98/ansible-flink/raw/master/files/httpclient-4.5.2.jar
@@ -8,20 +10,22 @@
   tasks:
     - name: Download config tar gz
       get_url: 
-        url: "{{ hostvars['localhost']['config_path'] }}"
-        dest: "{{ hostvars['localhost']['local_path'] }}"
+        url: "{{ config_path }}"
+        dest: "{{ local_path }}"
         mode: 0644
     - name: Download jar file
       get_url: 
-        url: "{{ hostvars['localhost']['jar_path'] }}"
-        dest: "{{ hostvars['localhost']['local_path'] }}"
+        url: "{{ jar_path }}"
+        dest: "{{ local_path }}"
         mode: 0644
     - name: Unzip config yaml file
       unarchive:
-        src: "{{ hostvars['localhost']['local_path'] + hostvars['localhost']['zip_config'] }}"
-        dest: "{{ hostvars['localhost']['local_path'] }}"
+        src: "{{ local_path + zip_config }}"
+        dest: "{{ local_path }}"
       
 - hosts: remote
+  vars_files:
+    - "../defaults/main.yml"
   vars:
     #local_path: /home/alejandro/
     #dest_path: /home/centos/
@@ -30,12 +34,12 @@
   tasks:
     - name: Copy config file to remote
       copy:
-        src: "{{ hostvars['localhost']['local_path'] + hostvars['192.168.1.62']['config_name'] }}"
-        dest: "{{ hostvars['192.168.1.62']['dest_path'] }}"
+        src: "{{ local_path + config_name }}"
+        dest: "{{ dest_path }}"
         mode: 0644
     - name: Copy jar file to remote
       copy:
-        src: "{{ hostvars['localhost']['local_path'] + hostvars['192.168.1.62']['jar_name'] }}"
-        dest: "{{ hostvars['192.168.1.62']['dest_path'] }}"
+        src: "{{ local_path + jar_name }}"
+        dest: "{{ dest_path }}"
         mode: 0644
 

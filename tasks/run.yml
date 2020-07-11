@@ -1,4 +1,6 @@
 - hosts: remote
+  vars_files:
+    - "../defaults/main.yml"
   vars:
     #script_name: hola_mundo.py
     #script_path: /home/centos/
@@ -6,6 +8,6 @@
     #local_path: /home/alejandro/
   tasks:
     - name: Run hello world python script
-      script: "{{ hostvars['192.168.1.62']['local_path'] + hostvars['192.168.1.62']['script_name'] }} --name Alejandro "
+      script: "{{ local_path + script_name }} --name Alejandro "
       register: output
     - debug: var=output.stdout_lines
