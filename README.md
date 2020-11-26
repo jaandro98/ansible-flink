@@ -1,7 +1,12 @@
 # ansible-flink
-Flink deployment tests with Ansible
+Flink deployment with Ansible
 
-## Execution    
+## PREFLIGHT
 ```
-ansible-playbook tasks/main.yml -i inventory/hosts -u centos --ask-pass 
+ansible-playbook tasks/main.yml -i inventory/hosts F.Preflight.yml --extra-vars '{"newJarArtifactoryUrl":"","newConfArtifactoryUrl":"","latestStableJarArtifactoryUrl":"","latestStableConfArtifactoryUrl":"","clusterName":""}'
+```
+
+## INSTALL
+```
+ansible-playbook tasks/main.yml -i inventory/hosts F.Install.yml --extra-vars '{"newJarArtifactoryUrl":"","newConfArtifactoryUrl":"","latestStableJarArtifactoryUrl":"","latestStableConfArtifactoryUrl":"","clusterName":""}'
 ```
