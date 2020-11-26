@@ -1,7 +1,5 @@
 ---
-- name: import copy module - aux files for python script
-  import_playbook: copy.yml
-- name: import download module - python in targ gz format
-  import_playbook: download.yml
-- name : import run module - python exec
-  import_playbook: run.yml
+
+- import_tasks: download.yml
+
+- import_tasks: run.yml

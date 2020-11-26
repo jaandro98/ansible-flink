@@ -1,19 +1,28 @@
 ---
-- hosts: local
-  connection: local
-  vars_files:
-    - "../defaults/main.yml"
-  vars:
-    #script_zip: https://github.com/jaandro98/ansible-flink/raw/master/python.tar.gz
-    #zip_name: python.tar.gz
-    #local_path: /home/alejandro/
-  tasks:
-    - name: Download python zip script from Github
-      get_url: 
-        url: "{{ script_zip }}"
-        dest: "{{ local_path }}"
-        mode: 0644
-    - name: unzip python script
-      unarchive:
-        src: "{{ local_path + zip_name }}"
-        dest: "{{ local_path }}"
+- name: Download python zip script from Github
+  get_url: 
+    url: "{{ script_zip }}"
+    dest: "{{ local_path }}"
+    mode: 0644
+
+- name: unzip python script
+  unarchive:
+    src: "{{ local_path + zip_name }}"
+    dest: "{{ local_path }}"
+
+- name: Download config tar gz
+  get_url: 
+    url: "{{ config_path }}"
+    dest: "{{ local_path }}"
+    mode: 0644
+
+- name: Download jar file
+  get_url: 
+    url: "{{ jar_path }}"
+    dest: "{{ local_path }}"
+    mode: 0644
+
+- name: Unzip config yaml file
+  unarchive:
+    src: "{{ local_path + zip_config }}"
+    dest: "{{ local_path }}"
