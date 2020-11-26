@@ -1,6 +1,6 @@
 ---
 - name: Run hello world python script
-  shell: python3 "{{ local_path + script_name }} --name Alejandro "
+  shell: python3 "{{ local_path + script_name }}" --name Alejandro
   register: output
 
 - name: Print python script output
