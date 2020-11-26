@@ -1,0 +1,7 @@
+- name: Flink Install
+  hosts: local
+  connection: local
+  become: true
+  become_user: root
+  roles:
+    - flink.install
